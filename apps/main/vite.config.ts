@@ -28,7 +28,7 @@ export default defineConfig(async (configEnv) => {
 					app1: "app1@http://localhost:8081/mf-manifest.json",
 				},
 				exposes: {},
-				// runtimePlugins: ["./mf-plugin.ts"],
+				runtimePlugins: ["./mf-plugin.ts"],
 			}),
 		],
 		resolve: {
