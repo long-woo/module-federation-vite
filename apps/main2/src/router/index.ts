@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { loadRemote } from '@module-federation/enhanced/runtime'
 import * as bridge from "@module-federation/bridge-vue3";
 
 import HomeView from "../views/HomeView.vue";
@@ -6,7 +7,11 @@ import HomeView from "../views/HomeView.vue";
 const App1 = bridge.createRemoteComponent({
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	loader: () => import("app1/mod"),
+	loader: () => loadRemote("app1/mod"),
+});
+
+const App2 = bridge.createRemoteComponent({
+	loader: () => loadRemote("app2/mod"),
 });
 
 const router = createRouter({
@@ -29,6 +34,11 @@ const router = createRouter({
 			path: "/app1/:pathMatch(.*)*",
 			name: "app1",
 			component: App1,
+		},
+		{
+			path: "/app2/:pathMatch(.*)*",
+			name: "app2",
+			component: App2,
 		},
 	],
 });

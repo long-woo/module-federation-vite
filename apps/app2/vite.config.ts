@@ -12,11 +12,11 @@ export default defineConfig(async (configEnv) => {
 
 	const config: UserConfig = {
 		server: {
-			port: 8081,
+			port: 8082,
 		},
 		plugins: [
 			federation({
-				name: "app1",
+				name: "app2",
 				exposes: {
 					"./mod": "./src/mod.ts",
 				},
